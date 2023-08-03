@@ -4,4 +4,4 @@ from decoder import *
 
 
 filename = input("Enter filename of binary to decode: ")
-res = decode(filename)
+res = decoder(filename)
