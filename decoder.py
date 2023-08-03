@@ -3,7 +3,7 @@ import math
 import smsutil
 
 def decoder(file):
-    f = open(file)
-    f.split(" ")
-    smsutil.decode(str(f))
-    i = 0
+    with open(file) as f:
+        lines = list(f)
+    for line in list:
+        smsutil.decode(line)
