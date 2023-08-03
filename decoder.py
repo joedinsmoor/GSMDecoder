@@ -6,4 +6,4 @@ def decoder(file):
     with open(file) as f:
         lines = list(f)
     for line in list:
-        smsutil.decode(line)
+        print(smsutil.decode(line))
