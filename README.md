@@ -6,6 +6,7 @@ Decode GSM 7-bit SMS messages
 To install and run:
 
 `- pip install -r requirements.txt`
+
 `- python3 menu.py`
 
 
