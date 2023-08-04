@@ -5,5 +5,5 @@ import smsutil
 def decoder(file):
     with open(file) as f:
         lines = list(f)
-    for line in list:
-        print(smsutil.decode(line))
+    for line in lines:
+        print(smsutil.decode(line, encoding ='latin-1'))
