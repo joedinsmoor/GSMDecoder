@@ -31,7 +31,8 @@ int main(){
         cout << contents;
     }
     
-   int i = decode(contents);
+   int i = 0; 
+   i = decode(contents);
 
     
     return i;
