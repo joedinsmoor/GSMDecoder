@@ -2,7 +2,7 @@ import string
 import math
 import smsutil
 
-def decode_me(file):
+def decoder(file):
     with open(file) as f:
         lines = list(f)
     for line in lines:

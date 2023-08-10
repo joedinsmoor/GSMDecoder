@@ -1,6 +1,6 @@
 import unittest
 import smsutil
-from . import decode_me
+from src.decoder import decoder
 
 
 class testDecode(unittest.TestCase):
@@ -11,6 +11,6 @@ class testDecode(unittest.TestCase):
             'is this line 3? I don''t know'
             'this is line 4.'
         )
-        decoded = decode_me(file)
+        decoded = decoder(file)
         encoded = decoded.encode('gsm7')
         self.assertEqual(decoded, encoded)
