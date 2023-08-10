@@ -1,4 +1,4 @@
-#include "decoder.h"
+#include "decoder.hpp"
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -6,19 +6,21 @@
 using namespace std;
 
 
-bool RUNNING = TRUE;
+
+bool RUNNING = true;
 
 void my_handler(int s) {
     cout << "Detected CTRL-C signal no. " << s << '\n';
-    RUNNING = FALSE;
+    RUNNING = false;
 }
 
 
 int main(){
-    cout << "Testing to make sure joseph isn't stupid";
+    cout << "Testing to make sure joseph isn't stupid\n\n";
     ifstream file;
     string filename;
-    cin >> "Input filename" >> filename;
+    cout << "Enter filename: ";
+    cin >> filename;
     string contents;
 
     //open file, pipe contents to string container
@@ -29,7 +31,8 @@ int main(){
         cout << contents;
     }
     
+   int i = decode(contents);
 
     
-    return 0;
+    return i;
 }

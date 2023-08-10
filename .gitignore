@@ -1,2 +1,6 @@
 __pycache__
 .vscode
+GSMDecoder.dir
+*.gch
+.DS_Store
+*.make

@@ -1,8 +1,10 @@
 #include <iostream>
 using namespace std;
+#include <string>
 
-int decode(char filename){
-    int line = 1;
+int decode(string contents){
+    cout << contents;
+    int line = 0;
     return line;
 }
 

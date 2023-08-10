@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
+#include <string>
 
-int decode(char){
+int decode(string){
     int i = 0;
     return i;
 }
