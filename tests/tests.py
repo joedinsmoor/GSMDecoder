@@ -1,6 +1,6 @@
 import unittest
 import smsutil
-from decoder import *
+from . import decode_me
 
 
 class testDecode(unittest.TestCase):
