@@ -10,25 +10,14 @@ number_header = '7F 80'
 
 def decoder(file):
     with open(file) as f:
-        lines = list(f)
-    for line in lines:
-        print(smsutil.decode(line))
+        smsutil.decode(f)
 
 def with_regex(file):
     ofile = 'out.csv'
-    with open(file) as f:
-        try:
-            lines = f.readlines()
-        except UnicodeDecodeError:
-            print("I'm not working")
-            pass
-        finally:
-            try:
-                for line in lines:
-                    if line.contains(message_header):
-                        ofile.append(line)
-                    elif line.contains(number_header):
-                        ofile.append(line)
-            except UnboundLocalError:
-                print("I'm really not working")
-                pass
+    with open(file, 'rb') as f:
+       # lines = list(f)
+        for line in f:
+            if message_header in line:
+                ofile.append(line)
+            elif number_header in line:
+               ofile.append(line)
