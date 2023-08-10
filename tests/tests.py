@@ -11,6 +11,6 @@ class testDecode(unittest.TestCase):
             'is this line 3? I don''t know'
             'this is line 4.'
         )
-        decoded = decoder(file)
+        decoded = decode_me(file)
         encoded = decoded.encode('gsm7')
         self.assertEqual(decoded, encoded)
