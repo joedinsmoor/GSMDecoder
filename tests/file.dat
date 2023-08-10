@@ -2,3 +2,7 @@
 'this is line 2 of the file'
 'is this line 3? I don''t know'
 'this is line 4.'
+'02 15 00 00 01 16 01 04 06 00 FF'
+'this is line 6, as a message'
+'7F 80'
+'this is a phone number, 8008675309'
