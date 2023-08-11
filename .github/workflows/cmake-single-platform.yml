@@ -30,6 +30,6 @@ jobs:
       
     - name: Build
       
-      working-directory: ${{github.workspace}}/cpp/cpp
+      working-directory: ${{github.workspace}}/cpp
       run: make
 
