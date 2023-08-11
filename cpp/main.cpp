@@ -11,7 +11,7 @@ using namespace std;
 const string messageHeader = "02 15 00 00 01 16 01 04 06";
 const string numberHeader = "7F 80";
 const string contactHeader = "30 01 06 00 05 08 08 00";
-const string sizeHeader = "04 00 00 04 00";
+const string sizeHeader = "00 00 04 00";
 
 bool RUNNING = true;
 
@@ -53,12 +53,6 @@ void threadShred(size_t header, string name, string filename, string contents){
 
 int main(){
     signal(SIGINT, my_handler);
-    
-    cout << messageHeader;
-    cout << "\n";
-    cout << numberHeader;
-    cout <<"\n";
-
     cout << "Testing to make sure joseph isn't stupid\n\n";
     fstream file;
     string outfilename;
