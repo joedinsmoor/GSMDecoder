@@ -1,10 +1,24 @@
+/*
+The bulk of the decoding is done in the decode function, supplemented by threadShred to parallelize the workload. This is built for C++ and cmake on MacOS Monterey.
+Testing is done using a system-agnostic approach, so functionality should be identical across operating systems.
+
+Written by: Joe Dinsmoor
+Github: https://github.com/joedinsmoor
+
+*/
+
+
+
+
 #include <iostream>
 #include <iomanip>
 #include <fstream>
 #include <string>
 #include <csignal>
+#include <unistd.h>
 extern "C"{
     #include <regex.h>
+    #include <time.h>
 }
 using namespace std;
 
@@ -22,11 +36,21 @@ void my_handler(int s) {
 
 
 void decode(string contents, string outfilename){
+    cout << "Entering Decode Stage \n\n";
+    usleep(500);
+    smatch match;
     size_t foundM = contents.find(messageHeader);
     size_t foundC = contents.find(contactHeader);
     size_t foundN = contents.find(numberHeader);
     size_t foundS = contents.find(sizeHeader); 
     regex_t pNumber;
+    regex re("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d");
+
+    int i = 0;
+    while (regex_search(subject, match, r)) {
+        cout << "\n Matched string is " << match.str(0) << endl;
+        cout << "It can be found at position " << match.position(0) << endl;
+    }
     int pattern;
     pattern = regcomp(&pNumber, "\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d", REG_EXTENDED | REG_ICASE);
     if (pattern){
@@ -34,7 +58,7 @@ void decode(string contents, string outfilename){
     }
 
 
-    int i = 0;
+
     ofstream outfile;
     if(foundM!=std::string::npos){
         cout << "Text Messages found, stored in messages.txt";
@@ -62,7 +86,6 @@ void threadShred(size_t header, string name, string filename, string contents){
 
 int main(){
     signal(SIGINT, my_handler);
-    cout << "Testing to make sure joseph isn't stupid\n\n";
     fstream file;
     string outfilename;
     string infilename;
@@ -78,12 +101,12 @@ int main(){
         file.open(infilename);
         if (file.is_open()){
             file >> contents;
-            cout << contents;
+            cout << "Contents written to temp string.\n";
+            file.close();
         }
         
         int i = 0; 
         decode(contents, outfilename);
-        return i;
     }
     return 0;
 }
