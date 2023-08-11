@@ -14,10 +14,12 @@ jobs:
     steps:
 
     - uses: actions/checkout@v3
-    - working-directory: ~/cpp
     - name: make
+      working-directory: ~/cpp
       run: make
     - name: make check
+      working-directory: ~/cpp
       run: make check
     - name: make distcheck
+      working-directory: ~/cpp
       run: make distcheck
