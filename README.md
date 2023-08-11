@@ -1,3 +1,5 @@
+[![CMake](https://github.com/joedinsmoor/GSMDecoder/actions/workflows/cmake-single-platform.yml/badge.svg)](https://github.com/joedinsmoor/GSMDecoder/actions/workflows/cmake-single-platform.yml)
+
 # GSMDecoder
 Decode GSM 7-bit SMS messages
 
