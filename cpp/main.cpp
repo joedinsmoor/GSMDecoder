@@ -36,7 +36,7 @@ int main(){
         
         int i = 0; 
         i = decode(contents);
+        return i;
     }
-    
-    return i;
+    return 0;
 }
