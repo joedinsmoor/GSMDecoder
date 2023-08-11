@@ -26,6 +26,14 @@ void decode(string contents, string outfilename){
     size_t foundC = contents.find(contactHeader);
     size_t foundN = contents.find(numberHeader);
     size_t foundS = contents.find(sizeHeader); 
+    regex_t pNumber;
+    int pattern;
+    pattern = regcomp(&pNumber, "\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d", REG_EXTENDED | REG_ICASE);
+    if (pattern){
+        cout << "Could not compile regex!\n";
+    }
+
+
     int i = 0;
     ofstream outfile;
     if(foundM!=std::string::npos){
@@ -36,6 +44,7 @@ void decode(string contents, string outfilename){
             cout << contents[i];
         }
     }
+    regfree(&pNumber);
 }
 
 void threadShred(size_t header, string name, string filename, string contents){
