@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <fstream>
 #include <string>
+#include <csignal>
 using namespace std;
 
 
@@ -16,6 +17,7 @@ void my_handler(int s) {
 
 
 int main(){
+    signal(SIGINT, my_handler);
     cout << "Testing to make sure joseph isn't stupid\n\n";
     ifstream file;
     string filename;
