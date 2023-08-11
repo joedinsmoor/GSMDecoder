@@ -12,8 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - working-directory: ~/cpp
+
     - uses: actions/checkout@v3
+    - working-directory: ~/cpp
     - name: make
       run: make
     - name: make check
