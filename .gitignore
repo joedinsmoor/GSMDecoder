@@ -1,5 +1,3 @@
 __pycache__
 .vscode
-*.gch
 .DS_Store
-*.make
