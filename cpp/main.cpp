@@ -18,13 +18,23 @@ void my_handler(int s) {
 
 int main(){
     signal(SIGINT, my_handler);
+    const string messageHeader = "02 15 00 00 01 16 01 04 06";
+    const string numberHeader = "7F 80";
+    
+    cout << messageHeader;
+    cout << "\n";
+    cout << numberHeader;
+    cout <<"\n";
+
+    cout << "Testing to make sure joseph isn't stupid\n\n";
+    ifstream file;
+    string filename;
+    cout << "Enter filename: ";
+    cin >> filename;
+    string contents;
+
     while(RUNNING){
-        cout << "Testing to make sure joseph isn't stupid\n\n";
-        ifstream file;
-        string filename;
-        cout << "Enter filename: ";
-        cin >> filename;
-        string contents;
+        
 
         //open file, pipe contents to string container
 

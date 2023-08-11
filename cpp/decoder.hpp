@@ -3,6 +3,6 @@ using namespace std;
 #include <string>
 
 int decode(string){
-    int line;
+    int line = 0;
     return line;
 }
