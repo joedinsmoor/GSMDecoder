@@ -18,24 +18,25 @@ void my_handler(int s) {
 
 int main(){
     signal(SIGINT, my_handler);
-    cout << "Testing to make sure joseph isn't stupid\n\n";
-    ifstream file;
-    string filename;
-    cout << "Enter filename: ";
-    cin >> filename;
-    string contents;
+    while(RUNNING){
+        cout << "Testing to make sure joseph isn't stupid\n\n";
+        ifstream file;
+        string filename;
+        cout << "Enter filename: ";
+        cin >> filename;
+        string contents;
 
-    //open file, pipe contents to string container
+        //open file, pipe contents to string container
 
-    file.open(filename);
-    if (file.is_open()){
-        file >> contents;
-        cout << contents;
+        file.open(filename);
+        if (file.is_open()){
+            file >> contents;
+            cout << contents;
+        }
+        
+        int i = 0; 
+        i = decode(contents);
     }
-    
-   int i = 0; 
-   i = decode(contents);
-
     
     return i;
 }
