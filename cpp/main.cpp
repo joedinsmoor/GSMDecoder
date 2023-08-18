@@ -16,8 +16,8 @@ Github: https://github.com/joedinsmoor
 #include <string>
 #include <csignal>
 #include <unistd.h>
+#include <regex>
 extern "C"{
-    #include <regex.h>
     #include <time.h>
 }
 using namespace std;
@@ -43,19 +43,19 @@ void decode(string contents, string outfilename){
     size_t foundC = contents.find(contactHeader);
     size_t foundN = contents.find(numberHeader);
     size_t foundS = contents.find(sizeHeader); 
-    regex_t pNumber;
+    regex pNumber;
     regex re("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d");
 
     int i = 0;
-    while (regex_search(subject, match, r)) {
+    while (regex_search(contents, match, re)) {
         cout << "\n Matched string is " << match.str(0) << endl;
         cout << "It can be found at position " << match.position(0) << endl;
     }
     int pattern;
-    pattern = regcomp(&pNumber, "\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d", REG_EXTENDED | REG_ICASE);
+    /*pattern = regcomp(&pNumber, "\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d", REG_EXTENDED | REG_ICASE);
     if (pattern){
         cout << "Could not compile regex!\n";
-    }
+    }*/
 
 
 
@@ -66,9 +66,40 @@ void decode(string contents, string outfilename){
         for(i = 0; i < foundM; i++){
             outfile << contents[i];
             cout << contents[i];
+            RUNNING = false;
         }
     }
-    regfree(&pNumber);
+
+    if(foundC!=std::string::npos){
+        cout << "Contacts found, stored in contacts.txt";
+        outfile.open("contacts.txt", std::ios_base::app);
+        for(i = 0; i < foundC; i++){
+            outfile << contents[i];
+            cout << contents[i];
+            RUNNING = false;
+        }
+    }
+
+    if(foundN!=std::string::npos){
+        cout << "Phone Numbers found, stored in numbers.txt";
+        outfile.open("numbers.txt", std::ios_base::app);
+        for(i = 0; i < foundN; i++){
+            outfile << contents[i];
+            cout << contents[i];
+            RUNNING = false;
+        }
+    }
+
+    if(foundS!=std::string::npos){
+        cout << "Size Indicators found, stored in sizes.txt";
+        outfile.open("sizes.txt", std::ios_base::app);
+        for(i = 0; i < foundM; i++){
+            outfile << contents[i];
+            cout << contents[i];
+            RUNNING = false;
+        }
+    }
+   //regfree(&pNumber);
 }
 
 void threadShred(size_t header, string name, string filename, string contents){
