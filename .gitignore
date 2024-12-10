@@ -1,3 +1,7 @@
 __pycache__
 .vscode
 .DS_Store
+CMakeFiles
+*.CMake
+CMakeCache.txt
+cpp/Makefile
