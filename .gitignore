@@ -5,3 +5,4 @@ CMakeFiles
 *.CMake
 CMakeCache.txt
 cpp/Makefile
+build
